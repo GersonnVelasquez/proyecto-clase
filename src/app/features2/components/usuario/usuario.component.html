@@ -1,0 +1,10 @@
+<button (click)="addUsuario()">Agregar Usuario</button>
+
+@for (usuario of usuarios; track $index) {
+<div>{{ usuario.nombre }}</div>
+<div>{{ usuario.apellido }}</div>
+<div>{{ usuario.edad }}</div>
+<div>{{ usuario.email }}</div>
+<div>{{ usuario.telefono }}</div>
+<div>{{ usuario.direccion }}</div>
+}

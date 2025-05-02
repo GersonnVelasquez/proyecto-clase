@@ -1,0 +1,65 @@
+<div>
+  <form>
+    <div>
+      <label>Nombre:</label>
+      <input type="text" />
+    </div>
+
+    <div>
+      <label>Apellido:</label>
+      <input type="text" />
+    </div>
+    <div>
+      <label>Edad:</label>
+      <input type="number" />
+    </div>
+    <div>
+      <label>Genero:</label>
+      <select>
+        <option value="">Seleccione</option>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+        <option value="otro">Otro</option>
+      </select>
+    </div>
+    <div>
+      <label>Email:</label>
+      <input type="email" />
+    </div>
+    <div>
+      <label>Telefono:</label>
+      <input type="tel" />
+    </div>
+    <div>
+      <label>Direccion:</label>
+      <input type="text" />
+    </div>
+    <button (click)="crearPersona()">Guardar Persona</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+        <th>Genero</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Direccion</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (persona of personas$ | async; track persona.uuid) {
+      <tr>
+        <td>{{ persona.nombre }}</td>
+        <td>{{ persona.apellido }}</td>
+        <td>{{ persona.edad }}</td>
+        <td>{{ persona.genero }}</td>
+        <td>{{ persona.email }}</td>
+        <td>{{ persona.telefono }}</td>
+        <td>{{ persona.direccion }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
