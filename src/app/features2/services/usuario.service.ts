@@ -3,7 +3,10 @@ import {
   addDoc,
   collection,
   collectionData,
+  deleteDoc,
+  doc,
   Firestore,
+  updateDoc,
 } from '@angular/fire/firestore';
 import { Usuario } from '../models/usuario.model';
 
@@ -15,11 +18,25 @@ export class UsuarioService {
 
   getUsuarios() {
     const usuarioCollection = collection(this.firestore, 'usuariooos');
-    return collectionData(usuarioCollection);
+    return collectionData(usuarioCollection, { idField: 'uuid' });
   }
 
   addUsuario(usuario: Usuario) {
     const usuarioCollection = collection(this.firestore, 'usuariooos');
     return addDoc(usuarioCollection, usuario);
+  }
+
+  editUsuario(usuario: Usuario) {
+    const usuarioCollection = collection(this.firestore, 'usuariooos');
+    const usuarioDoc = doc(usuarioCollection, usuario.uuid);
+    return updateDoc(usuarioDoc, {
+      ...usuario,
+    });
+  }
+
+  deleteUsuario(usuario: Usuario) {
+    const usuarioCollection = collection(this.firestore, 'usuariooos');
+    const usuarioDoc = doc(usuarioCollection, usuario.uuid);
+    return deleteDoc(usuarioDoc);
   }
 }
