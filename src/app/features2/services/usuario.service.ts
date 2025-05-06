@@ -37,6 +37,7 @@ export class UsuarioService {
   deleteUsuario(usuario: Usuario) {
     const usuarioCollection = collection(this.firestore, 'usuariooos');
     const usuarioDoc = doc(usuarioCollection, usuario.uuid);
+    console.log('hola mundo');
     return deleteDoc(usuarioDoc);
   }
 }
