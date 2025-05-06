@@ -1,10 +1,76 @@
-<button (click)="addUsuario()">Agregar Usuario</button>
 
-@for (usuario of usuarios; track $index) {
-<div>{{ usuario.nombre }}</div>
-<div>{{ usuario.apellido }}</div>
-<div>{{ usuario.edad }}</div>
-<div>{{ usuario.email }}</div>
-<div>{{ usuario.telefono }}</div>
-<div>{{ usuario.direccion }}</div>
-}
+<form>
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input [(ngModel)]="usuario.nombre" type="text" id="nombre" name="nombre" />
+  </div>
+  <div>
+    <label for="apellido">Apellido:</label>
+    <input
+      [(ngModel)]="usuario.apellido"
+      type="text"
+      id="apellido"
+      name="apellido"
+    />
+  </div>
+  <div>
+    <label for="edad">Edad:</label>
+    <input [(ngModel)]="usuario.edad" type="number" id="edad" name="edad" />
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input [(ngModel)]="usuario.email" type="email" id="email" name="email" />
+  </div>
+  <div>
+    <label for="telefono">Telefono:</label>
+    <input
+      [(ngModel)]="usuario.telefono"
+      type="tel"
+      id="telefono"
+      name="telefono"
+    />
+  </div>
+  <div>
+    <label for="direccion">Direccion:</label>
+    <textarea
+      [(ngModel)]="usuario.direccion"
+      id="direccion"
+      name="direccion"
+    ></textarea>
+  </div>
+
+  <button (click)="addUsuario()">Agregar Usuario</button>
+  <button (click)="guardarUsuario()">Guardar Usuario</button>
+</form>
+
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Edad</th>
+    <th>Email</th>
+    <th>Telefono</th>
+    <th>Direccion</th>
+    <th>Acciones</th>
+  </tr>
+  @for (item of usuarios; track $index) {
+  <tr>
+    <td>{{ item.nombre }}</td>
+    <td>{{ item.apellido }}</td>
+    <td>{{ item.edad }}</td>
+    <td>{{ item.email }}</td>
+    <td>{{ item.telefono }}</td>
+    <td>{{ item.direccion }}</td>
+    <td>
+      <button (click)="editUsuario(item)">Editar</button>
+      <button (click)="deleteUsuario(item)">Borrar</button>
+    </td>
+  </tr>
+  }
+</table>
+
+
+<div>
+  Cambio realizado
+</div>
