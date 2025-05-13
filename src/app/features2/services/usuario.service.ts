@@ -6,6 +6,7 @@ import {
   deleteDoc,
   doc,
   Firestore,
+  getDoc,
   updateDoc,
 } from '@angular/fire/firestore';
 import { Usuario } from '../models/usuario.model';
@@ -19,6 +20,12 @@ export class UsuarioService {
   getUsuarios() {
     const usuarioCollection = collection(this.firestore, 'usuariooos');
     return collectionData(usuarioCollection, { idField: 'uuid' });
+  }
+
+  getUsuario(id: string) {
+    const usuarioCollection = collection(this.firestore, 'usuariooos');
+    const usuarioDoc = doc(usuarioCollection, id);
+    return getDoc(usuarioDoc)
   }
 
   addUsuario(usuario: Usuario) {
