@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/usuario.model';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.scss',
 })
