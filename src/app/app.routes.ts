@@ -24,4 +24,9 @@ export const routes: Routes = [
     path: 'rol',
     loadComponent: () => import('./features2/components/rol/rol.component'),
   },
+  {
+    path: '',
+    redirectTo: 'usuario/lista',
+    pathMatch: 'full',
+  },
 ];
