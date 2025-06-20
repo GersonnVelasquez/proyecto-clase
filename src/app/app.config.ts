@@ -1,20 +1,10 @@
-import {
-  ApplicationConfig,
-  provideZoneChangeDetection,
-  isDevMode,
-} from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
-import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import {
-  getFirestore,
-  initializeFirestore,
-  persistentLocalCache,
-  provideFirestore,
-} from '@angular/fire/firestore';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,14 +21,6 @@ export const appConfig: ApplicationConfig = {
         measurementId: 'G-VJ750XVSX4',
       })
     ),
-    provideFirestore(() => {
-      return initializeFirestore(getApp(), {
-        localCache: persistentLocalCache(),
-      });
-    }),
-    provideServiceWorker('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      registrationStrategy: 'registerWhenStable:30000',
-    }),
+    provideFirestore(() => getFirestore()),
   ],
 };
